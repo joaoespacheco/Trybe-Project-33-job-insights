@@ -43,6 +43,13 @@ def get_min_salary(path: str) -> int:
     int
         The minimum salary paid out of all job opportunities
     """
+    jobs_data = read(path)
+    industries_data = {
+        int(industries["min_salary"])
+        for industries in jobs_data
+        if industries["min_salary"].isnumeric()
+    }
+    return min(industries_data)
     raise NotImplementedError
 
 
@@ -69,6 +76,7 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
+
     raise NotImplementedError
 
 
