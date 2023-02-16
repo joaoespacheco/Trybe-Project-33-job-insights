@@ -78,6 +78,21 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
         If `salary` isn't a valid integer
     """
 
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError("min_salary or max_salary doesn't exists")
+    elif (
+        not str(job["min_salary"]).isnumeric()
+        or not str(job["max_salary"]).isnumeric()
+    ):
+        raise ValueError(
+            "job['min_salary'] or job['max_salary'] aren't valid integers"
+        )
+    elif int(job["min_salary"]) > int(job["max_salary"]):
+        raise ValueError("aren't valid integers")
+    elif not str(salary).replace('-', '').isnumeric():
+        raise ValueError("aren't valid integers")
+
+    return int(job["min_salary"]) <= int(salary) <= int(job["max_salary"])
     raise NotImplementedError
 
 
