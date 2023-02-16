@@ -50,6 +50,7 @@ def get_min_salary(path: str) -> int:
         if industries["min_salary"].isnumeric()
     }
     return min(industries_data)
+
     raise NotImplementedError
 
 
