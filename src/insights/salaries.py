@@ -89,7 +89,7 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
         )
     elif int(job["min_salary"]) > int(job["max_salary"]):
         raise ValueError("aren't valid integers")
-    elif not str(salary).replace('-', '').isnumeric():
+    elif not str(salary).replace("-", "").isnumeric():
         raise ValueError("aren't valid integers")
 
     return int(job["min_salary"]) <= int(salary) <= int(job["max_salary"])
@@ -113,4 +113,15 @@ def filter_by_salary_range(
     list
         Jobs whose salary range contains `salary`
     """
+
+    jobs_list = []
+
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                jobs_list.append(job)
+        except ValueError as e:
+            print(e)
+
+    return jobs_list
     raise NotImplementedError
