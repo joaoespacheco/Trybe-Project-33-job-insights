@@ -120,8 +120,8 @@ def filter_by_salary_range(
         try:
             if matches_salary_range(job, salary):
                 jobs_list.append(job)
-        except ValueError as e:
-            print(e)
+        except ValueError:
+            pass
 
     return jobs_list
     raise NotImplementedError
