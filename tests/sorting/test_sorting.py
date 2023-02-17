@@ -1,6 +1,5 @@
 from datetime import datetime
 from src.pre_built.sorting import sort_by
-from src.insights.jobs import read
 
 PATH = "tests/mocks/sorting.csv"
 
